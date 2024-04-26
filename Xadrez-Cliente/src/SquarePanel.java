@@ -1,3 +1,5 @@
+package xadrez;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
@@ -23,7 +25,6 @@ public class SquarePanel extends JPanel {
         cg = c;
         setPreferredSize(new Dimension(42, 42));
         imageLabel = new JLabel();
-        
         imageLabel.setPreferredSize(new Dimension(32, 32));
         add(imageLabel);
         //loadPieceImages();
@@ -31,17 +32,11 @@ public class SquarePanel extends JPanel {
     }
 
     public static void loadPieceImages() {
+        URL iconURL;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 6; j++) {
-                String imagePath = "images/" + imageFilename[i][j];
-                // Obtém a URL da imagem a partir do diretório da classe
-                URL imageURL = SquarePanel.class.getResource(imagePath);
-                if (imageURL != null) {
-                    pieceImage[i][j] = Toolkit.getDefaultToolkit().getImage(imageURL);
-                } else {
-                    System.err.println("Imagem não encontrada: " + imagePath);
-                    // Se a imagem não for encontrada, você pode lidar com isso de acordo com a sua lógica
-                }
+                iconURL = ClassLoader.getSystemResource("images/" + imageFilename[i][j]);
+                pieceImage[i][j] = Toolkit.getDefaultToolkit().getImage(iconURL);
             }
         }
     }
