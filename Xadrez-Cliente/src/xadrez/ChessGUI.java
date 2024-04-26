@@ -23,7 +23,7 @@ public class ChessGUI extends JFrame {
                 board[i][j] = sqPanel;
                 chessPanel.add(sqPanel);
 
-            }
+            } 
         }
 
         add(chessPanel, BorderLayout.CENTER);
